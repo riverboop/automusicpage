@@ -1,4 +1,4 @@
-#Auto Music Page Version 1.2 by Rin Dyke
+#Auto Music Page Version 1.3 BETA by Rin Dyke
 import os
 import string
 import tkinter
@@ -49,12 +49,18 @@ def getandmake():
         x += 1
         album = str(audio["album"])
         album = album.strip("[] \'")
+        print(str(song))
+        zipcom= "zip " + tempdir + "/album.zip \"" + str(song) + "\""
+        subprocess.call(zipcom, shell=True)
     try:
         var1 = "<!DOCTYPE html> <html> <head> <link href=\"/main.css\" type=\"text/css\" rel=\"stylesheet\"> </head>  <body> <img width=120 height=120 src=\"" + cover + "\"> <h1>" + album + "</h1> <ol>"
         out = var1 + bigblock + "</ol> </body> </html>"
         f = open(tempdir + "/" + "index.html", "w")
         f.write(out)
         if (str(args.no_window)== "False"):
+            lbl.set("HTML File Created!")
+        else:
+            print("HTML File Created!")
             lbl.set("File Created!")
         else:
             print("File Created!")
