@@ -12,6 +12,7 @@ import subprocess
 parser = argparse.ArgumentParser(description='Creates an webpage with mp3 from an album')
 parser.add_argument('-inf', "--input_folder", type=str,  help='the folder with the audio files and album cover')
 parser.add_argument('-nw', "--no_window", action='store_true', default='False', help='don\'t open the gui')
+parser.add_argument('-nz', "--no_zip", action='store_true', default="False", help='create a zip file with the songs')
 global args
 args = parser.parse_args()
 curdir = os.getcwd
@@ -50,10 +51,12 @@ def getandmake():
         album = str(audio["album"])
         album = album.strip("[] \'")
         print(str(song))
-        zipcom= "zip " + tempdir + "/album.zip \"" + str(song) + "\""
-        subprocess.call(zipcom, shell=True)
+        if(str(args.no_zip) == "False"):
+        	zipcom= "zip " + tempdir + "/album.zip \"" + str(song) + "\""
+	        subprocess.call(zipcom, shell=True)
     try:
         var1 = "<!DOCTYPE html> <html> <head> <link href=\"/main.css\" type=\"text/css\" rel=\"stylesheet\"> </head>  <body> <img width=120 height=120 src=\"" + cover + "\"> <h1>" + album + "</h1> <ol>"
+
         out = var1 + bigblock + "</ol> </body> </html>"
         f = open(tempdir + "/" + "index.html", "w")
         f.write(out)
@@ -61,9 +64,8 @@ def getandmake():
             lbl.set("HTML File Created!")
         else:
             print("HTML File Created!")
-            lbl.set("File Created!")
-        else:
-            print("File Created!")
+        #else:
+         #   print("File Created!")
     except UnboundLocalError:
         if (str(args.no_window) == "False"):
             if (bigblock == ""):
