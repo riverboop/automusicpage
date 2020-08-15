@@ -1,12 +1,12 @@
-Auto Music Page v1.2
+Auto Music Page Beta v1.3
 
-Tested on Linux Mint 19.1 and Windows 10
-Not tested on Mac, feel free to port it if it doesn't work
+Tested on Arch Linux, please test on windows and mac
 
 YOU WILL NEED:
 mutagen, which can be found at https://mutagen.readthedocs.io/en/latest/
 ffmpeg, which can be found at https://ffmpeg.org/
 tkinter, which should be a standard python library
+zip, which you might have. do zip --version in the terminal to check :)
 This program uses python 3
 
 Instructions:
