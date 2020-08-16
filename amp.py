@@ -9,6 +9,7 @@ from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
 import argparse
 import subprocess
+#args
 parser = argparse.ArgumentParser(description='Creates an webpage with mp3 from an album')
 parser.add_argument('-inf', "--input_folder", type=str,  help='the folder with the audio files and album cover')
 parser.add_argument('-nw', "--no_window", action='store_true', default='False', help='don\'t open the gui')
@@ -23,6 +24,7 @@ def getandmake():
     blocks=[]
     a = ""
     imgext = (".jpeg", ".jpg", ".png")
+#convert ogg to mp3
     for file in os.listdir(tempdir):
         if file.endswith(".ogg"):
             filepath = tempdir + "/" + file
@@ -39,6 +41,7 @@ def getandmake():
     x = 0
     audio = ""
     bigblock = ""
+#add songs to html file
     for song in pathlist:
         audio = MP3(song, ID3=EasyID3)
         a = audio
@@ -51,6 +54,7 @@ def getandmake():
         album = str(audio["album"])
         album = album.strip("[] \'")
         print(str(song))
+#zip files
         if(str(args.no_zip) == "False"):
         	zipcom= "zip " + tempdir + "/album.zip \"" + str(song) + "\""
 	        subprocess.call(zipcom, shell=True)
@@ -64,8 +68,7 @@ def getandmake():
             lbl.set("HTML File Created!")
         else:
             print("HTML File Created!")
-        #else:
-         #   print("File Created!")
+#excpetion handling
     except UnboundLocalError:
         if (str(args.no_window) == "False"):
             if (bigblock == ""):
@@ -78,6 +81,7 @@ def getandmake():
             else:
                 lbl.set("ERROR: No music files")
             
+#cli or gui
 if (str(args.no_window) == "True"):
     tempdir = args.input_folder
     getandmake()
