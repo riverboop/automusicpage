@@ -1,4 +1,4 @@
-#Auto Music Page Version 1.3 BETA by Rin Dyke
+#Auto Music Page Version 1.3  by Rin Dyke
 import os
 import string
 import tkinter
