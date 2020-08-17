@@ -41,45 +41,47 @@ def getandmake():
     x = 0
     audio = ""
     bigblock = ""
-#add songs to html file
+    a = audio                         
+    album = ""
     for song in pathlist:
         audio = MP3(song, ID3=EasyID3)
-        a = audio
-        title = str(audio["title"])
+#zip files
+        if(str(args.no_zip) == "False"):
+            zipcom= "zip " + tempdir + "/album.zip \"" + str(song) + "\""
+            subprocess.call(zipcom, shell=True)
+#get id3 data
+        try:
+            title = str(audio["title"])
+        except:
+            title = input(song + " title: ")
         titlelist.append(title.strip("[] \'"))
         var2 = "<li> <h4>" + titlelist[x] + "</h4> <audio controls> <source src=\"" + songlist[x] + "\"type=\"audio/mpeg\"> </audio> </li>"
         blocks.append(var2)
         bigblock += blocks[x]
         x += 1
-        album = str(audio["album"])
-        album = album.strip("[] \'")
-        print(str(song))
-#zip files
-        if(str(args.no_zip) == "False"):
-        	zipcom= "zip " + tempdir + "/album.zip \"" + str(song) + "\""
-	        subprocess.call(zipcom, shell=True)
-    try:
-        var1 = "<!DOCTYPE html> <html> <head> <link href=\"/main.css\" type=\"text/css\" rel=\"stylesheet\"> </head>  <body> <img width=120 height=120 src=\"" + cover + "\"> <h1>" + album + "</h1> <ol>"
-
-        out = var1 + bigblock + "</ol> </body> </html>"
-        f = open(tempdir + "/" + "index.html", "w")
-        f.write(out)
-        if (str(args.no_window)== "False"):
-            lbl.set("HTML File Created!")
-        else:
-            print("HTML File Created!")
+    if(album == ""):
+        try:
+            album = str(audio["album"])
+        except:
+            album = input("album: ")
+            album = album.strip("[] \'")
+#create html file
+        try:
+            var1 = "<!DOCTYPE html> <html> <head> <link href=\"/main.css\" type=\"text/css\" rel=\"stylesheet\"> </head>  <body> <img width=120 height=120 src=\"" + cover + "\"> <h1>" + album + "</h1> <ol>"
+            out = var1 + bigblock + "</ol> </body> </html>"
+            f = open(tempdir + "/" + "index.html", "w")
+            f.write(out)
+            if (str(args.no_window)== "False"):
+                lbl.set("HTML File Created!")
+            else:
+                print("HTML File Created!")
 #excpetion handling
-    except UnboundLocalError:
-        if (str(args.no_window) == "False"):
-            if (bigblock == ""):
-                print ("ERROR: No music files")
-            else:
-                print("ERROR: No album cover image")
-        else:
-            if (bigblock == ""):
-                lbl.set("ERROR: No music files")
-            else:
-                lbl.set("ERROR: No music files")
+        except UnboundLocalError:
+            if (str(args.no_window) == "True"):
+                if (bigblock == ""):
+                    print ("ERROR: No music files")
+                else:
+                    print("ERROR: No album cover image")
             
 #cli or gui
 if (str(args.no_window) == "True"):

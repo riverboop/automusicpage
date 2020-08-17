@@ -1,2 +1,2 @@
 v1.1: Added feature that coverts ogg vorbis files to mp3
-beta 1.3 added zip file making :)
+v1.3 Added zip file making, fixed error if files lacked id3 data 
