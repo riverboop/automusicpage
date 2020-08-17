@@ -11,7 +11,7 @@ import argparse
 import subprocess
 #args
 parser = argparse.ArgumentParser(description='Creates an webpage with mp3 from an album')
-parser.add_argument('-inf', "--input_folder", type=str,  help='the folder with the audio files and album cover')
+parser.add_argument('-in', "--input_folder", type=str,  help='the folder with the audio files and album cover')
 parser.add_argument('-nw', "--no_window", action='store_true', default='False', help='don\'t open the gui')
 parser.add_argument('-nz', "--no_zip", action='store_true', default="False", help='create a zip file with the songs')
 global args

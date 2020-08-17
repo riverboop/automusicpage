@@ -3,12 +3,12 @@ Auto Music Page Beta v1.3
 Tested on Arch Linux, please test on windows and mac
 
 YOU WILL NEED:
+python 3
 mutagen, which can be found at https://mutagen.readthedocs.io/en/latest/
 ffmpeg, which can be found at https://ffmpeg.org/
 tkinter, which should be a standard python library
 zip, which you might have. do zip --version in the terminal to check :)
-This program uses python 3
 
 Instructions:
 In the gui just open the folder with the mp3 files and album cover (jpeg or png), and it'll create an html document.
-For the cli type python3 ampterm.py -nw -inf [path]
+For the cli type python3 ampterm.py -nw -in [path]
