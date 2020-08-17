@@ -17,6 +17,8 @@ parser.add_argument('-nz', "--no_zip", action='store_true', default="False", hel
 global args
 args = parser.parse_args()
 curdir = os.getcwd
+tempdir = args.input_folder
+
 def getandmake():
     songlist = []
     pathlist = []
@@ -82,10 +84,7 @@ def getandmake():
                     print ("ERROR: No music files")
                 else:
                     print("ERROR: No album cover image")
-            
-#cli or gui
 if (str(args.no_window) == "True"):
-    tempdir = args.input_folder
     getandmake()
 else: 
     class Gui:
