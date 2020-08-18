@@ -11,4 +11,4 @@ zip, which you might have. do zip --version in the terminal to check :)
 
 Instructions:
 In the gui just open the folder with the mp3 files and album cover (jpeg or png), and it'll create an html document.
-For the cli type python3 ampterm.py -nw -in [path]
+For the cli type python3 amp.py -nw -in [path]

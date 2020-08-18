@@ -1,2 +1,4 @@
 v1.1: Added feature that coverts ogg vorbis files to mp3
 v1.3: Added zip file making, fixed error if files lacked id3 data 
+v1.31: Fixed bug with brackets around album name,
+Added putting the album name in the <title>
