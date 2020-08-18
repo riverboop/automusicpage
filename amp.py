@@ -1,4 +1,5 @@
-#Auto Music Page Version 1.3 by Rin Dyke
+#Auto Music Page Version 1.31 by Rin Dyke
+#Brad if you see this don't tell my dad about the name :)
 import os
 import string
 import tkinter
@@ -64,12 +65,13 @@ def getandmake():
     if(album == ""):
         try:
             album = str(audio["album"])
+            album = album.strip("[] \'")
         except:
             album = input("album: ")
             album = album.strip("[] \'")
 #create html file
         try:
-            var1 = "<!DOCTYPE html> <html> <head> <link href=\"/main.css\" type=\"text/css\" rel=\"stylesheet\"> </head>  <body> <img width=120 height=120 src=\"" + cover + "\"> <h1>" + album + "</h1> <ol>"
+            var1 = "<!DOCTYPE html> <html> <head> <link href=\"/main.css\" type=\"text/css\" rel=\"stylesheet\"> <title>" + album + "</title> </head>  <body> <img width=120 height=120 src=\"" + cover + "\"> <h1>" + album + "</h1> <ol>"
             out = var1 + bigblock + "</ol> </body> </html>"
             f = open(tempdir + "/" + "index.html", "w")
             f.write(out)
