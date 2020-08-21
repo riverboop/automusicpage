@@ -1,5 +1,4 @@
 #Auto Music Page Version 1.31 by Rin Dyke
-#Brad if you see this don't tell my dad about the name :)
 import os
 import string
 import tkinter
@@ -92,7 +91,7 @@ else:
     class Gui:
         def __init__(self, master):
             self.master = master
-            master.title("Auto Music Page v1.2")
+            master.title("Auto Music Page v1.31")
             self.open_button = Button(master, text="Open Folder", command=self.open)
             self.open_button.place(relx=0.5, rely=0.5, anchor=CENTER)
             self.close = Button(master, text="Exit", command=self.close)
