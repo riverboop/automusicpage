@@ -1,4 +1,4 @@
-#Auto Music Page Version 1.31 by Rin Dyke
+#Auto Music Page Version 1.31 by River Dyke
 import os
 import string
 import tkinter
